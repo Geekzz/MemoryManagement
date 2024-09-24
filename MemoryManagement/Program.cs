@@ -266,6 +266,57 @@
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
+            /* F1: Jag använder en stack eftersom den låter mig hantera öppnings och stängningsparenteser i 
+             * rätt ordning genom att lägga till dem när de öppnas och ta bort dem när de stängs, 
+             * vilket gör så att att strängen är välformad
+            */
+
+            Console.WriteLine("Enter a string with parentheses to check: ");
+            string? input = Console.ReadLine();
+
+            Stack<char> charStack = new Stack<char>();
+
+            foreach (char c in input)
+            {
+                // if its an opening bracket, push it on the stack
+                if (c == '(' || c == '{' || c == '[')
+                {
+                    charStack.Push(c);
+                }
+                // if its a closing bracket, check if the stack is empty or if the top doesnt match
+                else if (c == ')' || c == '}' || c == ']')
+                {
+                    // if stack is empty, then its incorrect
+                    if (charStack.Count == 0)
+                    {
+                        Console.WriteLine("The parentheses are not well formed");
+                        return;
+                    }
+
+                    char lastOpened = charStack.Pop();
+
+                    // check if the popped character matches the opening bracket
+                    if ((c == ')' && lastOpened != '(') ||
+                        (c == '}' && lastOpened != '{') ||
+                        (c == ']' && lastOpened != '['))
+                    {
+                        Console.WriteLine("The parentheses are not well formed");
+                        return;
+                    }
+                }
+            }
+
+            // if stack is empty, then its correct
+            if (charStack.Count == 0)
+            {
+                Console.WriteLine("The parentheses are well formed");
+                return;
+            }
+            else
+            {
+                Console.WriteLine("The parentheses are not well formed");
+                return;
+            }
         }
     }
 }
