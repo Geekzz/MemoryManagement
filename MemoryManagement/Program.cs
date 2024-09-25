@@ -6,6 +6,32 @@
         /// The main method, vill handle the menues for the program
         /// </summary>
         /// <param name="args"></param>
+
+        /* ------------------------------------------------------------------------------------------------------------------
+         * F1: 
+         * Stacken: Lagrar värdetyper och referenser, snabb och automatisk frigöring när en metod avslutas
+         * Heapen: Lagrar objekt, kräver garbage collection för att frigöra minne, långsammare men flexibel med större minnesutrymme
+         * till exempel:
+         * int x = 10; <--- x lagras på stacken
+         * MyClass obj = new MyClass(); <--- obj referens på stacken, själva objektet på heapen
+         * 
+         * F2:
+         * Value types är nåt som lagrar själva värdet på stacken, och när en value type kopieras, dupliceras värdet. 
+         * Värdet påverkar inte den ursprugliga variabeln, tex:
+         * int a = 10;
+         * int b = a; <--- b får en kopia av värdet, ändrar inte a
+         * Reference types är däremot nåt som lagrar en referens på stacken men själva objektet finns på heapen.
+         * När en reference type kopieras, delas referensen till objektet, dvs ändringar på en referens påverkar alla som
+         * pekar på samma objekt, tex:
+         * MyClass obj1 = new MyClass();
+         * MyClass obj2 = obj1; <--- obj2 pekar på samma objekt, ändringar påverkar båda
+         * 
+         * F3:
+         * Den första metoden returnerar 3 eftersom int är en value type, vilket innebär att när y kopieras från x,
+         * skapas en separat kopia, och ändringar i y påverkar inte x. Den andra metoden returnerar 4 eftersom 
+         * MyInt är en reference type, och både x och y pekar på samma objekt, så en ändring via y påverkar också x.
+         * Kortfattat: Value types != Reference types
+        */
         static void Main(string[] args)
         {
             while (true)
@@ -55,7 +81,7 @@
         }
         static void ExamineList()
         {
-            /*
+            /* 
              * Loop this method untill the user inputs something to exit to main menue.
              * Create a switch statement with cases '+' and '-'
              * '+': Add the rest of the input to the list (The user could write +Adam and "Adam" would be added to the list)
@@ -65,7 +91,7 @@
              * Below you can see some inspirational code to begin working.
             */
 
-            /*
+            /* ------------------------------------------------------------------------------------------------------------------
              * F2: Den ökar varje fjärde element (första element också, då capacity är 0 från början)
              * F3: 4
              * F4: Om listan skulle växa med 1 element varje gång du lägger till något,
@@ -73,6 +99,7 @@
              * F5: Capacity storlek stannar oförändrad
              * F6: När du vet i förväg exakt hur många element du kommer behöva, så datorn behöver inte 
              * göra om minnet flera gånger
+             * ------------------------------------------------------------------------------------------------------------------
             */
 
             List<string> theList = new List<string>();
@@ -186,8 +213,10 @@
              * Make sure to look at the stack after pushing and and poping to see how it behaves
             */
 
-            /* F1: För att stack är Först In Sist Ut (FILO), vilket gör att den som kom in först i ICA kön
+            /* ------------------------------------------------------------------------------------------------------------------
+             * F1: För att stack är Först In Sist Ut (FILO), vilket gör att den som kom in först i ICA kön
              * går ut sist, vilket inte är hur en kö fungerar i verkligheten
+             * ------------------------------------------------------------------------------------------------------------------
             */
 
             Stack<string> theStack = new Stack<string>();
@@ -266,9 +295,11 @@
              * Example of incorrect: (()]), [), {[()}],  List<int> list = new List<int>() { 1, 2, 3, 4 );
              */
 
-            /* F1: Jag använder en stack eftersom den låter mig hantera öppnings och stängningsparenteser i 
+            /* ------------------------------------------------------------------------------------------------------------------
+             * F1: Jag använder en stack eftersom den låter mig hantera öppnings och stängningsparenteser i 
              * rätt ordning genom att lägga till dem när de öppnas och ta bort dem när de stängs, 
              * vilket gör så att att strängen är välformad
+             * ------------------------------------------------------------------------------------------------------------------
             */
 
             Console.WriteLine("Enter a string with parentheses to check: ");
