@@ -34,7 +34,6 @@
         */
         static void Main(string[] args)
         {
-            Console.WriteLine("Even: " + res);
             while (true)
             {
                 Console.WriteLine("Please navigate through the menu by inputting the number \n(1, 2, 3 ,4, 0) of your choice"
@@ -368,7 +367,7 @@
             return n + RecursiveEven(n - 1);
         }
 
-        static int fibonacciRecursive(int n)
+        static int FibonacciRecursive(int n)
         {
             if (n == 0)
                 return 0; // fibonacciRecursive(0) = 0
@@ -396,6 +395,26 @@
                 if(i % 2 == 0)
                     result += i;
             }
+            return result;
+        }
+
+        static int FibonacciInterative(int n)
+        {
+            int result = 0;
+            int a = 0;
+            int b = 1;
+
+            if (n == 0)
+                return 0;
+            if (n == 1)
+                return 1;
+            for(int i = 2; i <= n; i++)
+            {
+                result = a + b;
+                a = b; // update a to previous fibonacci number
+                b = result; // update b to current fibonacci number
+            }
+
             return result;
         }
     }
