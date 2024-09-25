@@ -66,6 +66,14 @@
                     case '4':
                         CheckParanthesis();
                         break;
+                    case '5':
+                        int res = RecursiveOdd(5);
+                        Console.WriteLine("Result: " + res);
+                        break;
+                    case '6':
+                        int res2 = RecursiveEven(12);
+                        Console.WriteLine("Result: " + res2);
+                        break;
                     /*
                      * Extend the menu to include the recursive 
                      * and iterative exercises.
@@ -349,5 +357,23 @@
                 return;
             }
         }
+        static int RecursiveOdd(int n)
+        {
+            // Console.WriteLine("N: " + n);
+            if(n == 1)
+                return 1;
+            return RecursiveOdd(n - 1) + 2;
+        }
+
+        static int RecursiveEven(int n)
+        {
+            Console.WriteLine("N: " + n);
+            if (n == 1)
+                return 0;
+            if (n % 2 != 0)
+                n -= 1;
+            return n + RecursiveEven(n - 1);
+        }
     }
+
 }
