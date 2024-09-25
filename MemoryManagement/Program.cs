@@ -373,7 +373,7 @@
                 return 0; // fibonacciRecursive(0) = 0
             if (n == 1)
                 return 1; // fibonacciRecursive(1) = 1
-            return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
+            return FibonacciRecursive(n - 1) + FibonacciRecursive(n - 2);
         }
 
         static int IterativeOdd(int n)
