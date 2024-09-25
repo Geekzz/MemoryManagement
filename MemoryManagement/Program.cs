@@ -66,14 +66,6 @@
                     case '4':
                         CheckParanthesis();
                         break;
-                    case '5':
-                        int res = RecursiveOdd(5);
-                        Console.WriteLine("Result: " + res);
-                        break;
-                    case '6':
-                        int res2 = RecursiveEven(12);
-                        Console.WriteLine("Result: " + res2);
-                        break;
                     /*
                      * Extend the menu to include the recursive 
                      * and iterative exercises.
@@ -373,6 +365,15 @@
             if (n % 2 != 0)
                 n -= 1;
             return n + RecursiveEven(n - 1);
+        }
+
+        static int fibonacciRecursive(int n)
+        {
+            if (n == 0)
+                return 0; // fibonacciRecursive(0) = 0
+            if (n == 1)
+                return 1; // fibonacciRecursive(1) = 1
+            return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
         }
     }
 
