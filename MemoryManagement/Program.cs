@@ -14,7 +14,7 @@
          * till exempel:
          * int x = 10; <--- x lagras på stacken
          * MyClass obj = new MyClass(); <--- obj referens på stacken, själva objektet på heapen
-         * 
+         * ------------------------------------------------------------------------------------------------------------------
          * F2:
          * Value types är nåt som lagrar själva värdet på stacken, och när en value type kopieras, dupliceras värdet. 
          * Värdet påverkar inte den ursprugliga variabeln, tex:
@@ -25,12 +25,13 @@
          * pekar på samma objekt, tex:
          * MyClass obj1 = new MyClass();
          * MyClass obj2 = obj1; <--- obj2 pekar på samma objekt, ändringar påverkar båda
-         * 
+         * ------------------------------------------------------------------------------------------------------------------
          * F3:
          * Den första metoden returnerar 3 eftersom int är en value type, vilket innebär att när y kopieras från x,
          * skapas en separat kopia, och ändringar i y påverkar inte x. Den andra metoden returnerar 4 eftersom 
          * MyInt är en reference type, och både x och y pekar på samma objekt, så en ändring via y påverkar också x.
          * Kortfattat: Value types != Reference types
+         * ------------------------------------------------------------------------------------------------------------------
         */
         static void Main(string[] args)
         {
@@ -389,6 +390,13 @@
 
         static int IterativeEven(int n)
         {
+            /* ------------------------------------------------------------------------------------------------------------------
+             * F: 
+             * Jag misstänker att iterativa lösningar är mer minnesvänliga än rekursiva, särskilt när djup rekursion kan 
+             * orsaka överbelastning av stackminnet. Det verkar som att funktioner som använder iteration, 
+             * såsom listor, köer och stackar etc. är mer effektiva ur minnesperspektiv
+             * ------------------------------------------------------------------------------------------------------------------
+            */
             int result = 0;
             for(int i = 0; i <= n; i++)
             {
@@ -400,14 +408,17 @@
 
         static int FibonacciInterative(int n)
         {
-            int result = 0;
-            int a = 0;
-            int b = 1;
-
+            // Använder if satser för att kontrollera n innan man initierar variabler för att undvika onödiga inits
             if (n == 0)
                 return 0;
             if (n == 1)
                 return 1;
+
+            // Om n är större än 1 så kan man börja initialiera variabler nedan
+            int result = 0;
+            int a = 0;
+            int b = 1;
+
             for(int i = 2; i <= n; i++)
             {
                 result = a + b;
